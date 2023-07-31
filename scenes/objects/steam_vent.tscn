@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq2bw803mvtkr"]
+
+[ext_resource type="Texture2D" uid="uid://chh4vjdlqp1df" path="res://assets/graphics/objects/ventilation_hole.png" id="1_pr6rb"]
+[ext_resource type="Texture2D" uid="uid://b3hbi4m6dmu6l" path="res://assets/graphics/decals/white.png" id="2_aqdv4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x2pil"]
+radius = 88.0227
+
+[sub_resource type="Gradient" id="Gradient_gq6lw"]
+offsets = PackedFloat32Array(0.0174419, 0.209302, 0.622093, 1)
+colors = PackedColorArray(0.92549, 0.92549, 0.92549, 0.556863, 0.886275, 0.886275, 0.886275, 0.376471, 0.916639, 0.91664, 0.916639, 0.235294, 0.992157, 0.992157, 0.992157, 0.00784314)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_idc1p"]
+gradient = SubResource("Gradient_gq6lw")
+
+[sub_resource type="Curve" id="Curve_b4b3x"]
+_data = [Vector2(0, 0.0421052), 0.0, 0.312709, 0, 0, Vector2(0.369458, 0.273684), 0.0, 0.0, 0, 0, Vector2(0.827586, 0.610526), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_k87ik"]
+width = 531
+curve = SubResource("Curve_b4b3x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xqkx1"]
+emission_shape = 1
+emission_sphere_radius = 62.79
+particle_flag_disable_z = true
+gravity = Vector3(150, -250, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 720.0
+scale_max = 23.7
+scale_curve = SubResource("CurveTexture_k87ik")
+color = Color(0.988235, 0.988235, 0.988235, 0.207843)
+color_ramp = SubResource("GradientTexture1D_idc1p")
+
+[node name="SteamVent" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x2pil")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pr6rb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 6
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_xqkx1")
+texture = ExtResource("2_aqdv4")
+lifetime = 2.0
+trail_sections = 2
+trail_section_subdivisions = 1

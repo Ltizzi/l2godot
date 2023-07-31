@@ -1,0 +1,6 @@
+res://scenes/levels/level.tscn
+res://scenes/levels/outside.tscn
+res://scenes/buildings/house.tscn
+res://scenes/objects/item_container.tscn
+res://scenes/objects/box_2.tscn
+res://scenes/levels/inside.tscn
