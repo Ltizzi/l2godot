@@ -1,13 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ng20m2bfw426"]
+[gd_scene load_steps=15 format=3 uid="uid://ng20m2bfw426"]
 
 [ext_resource type="PackedScene" uid="uid://fgdmieqnsupj" path="res://scenes/levels/level.tscn" id="1_22v5y"]
+[ext_resource type="Script" path="res://scenes/levels/inside.gd" id="2_30ug3"]
 [ext_resource type="TileSet" uid="uid://dyjmh6ieosh4t" path="res://scenes/levels/inside.tres" id="2_pk2i0"]
 [ext_resource type="PackedScene" uid="uid://bqsykdy2py8at" path="res://scenes/objects/light_fan_animation.tscn" id="3_b1yjv"]
 [ext_resource type="PackedScene" uid="uid://deye6qdqod16f" path="res://scenes/objects/simple_light.tscn" id="4_qgvex"]
 [ext_resource type="PackedScene" uid="uid://fxdwvkqhg5wl" path="res://scenes/objects/wall_light.tscn" id="5_fcofb"]
 [ext_resource type="Texture2D" uid="uid://bvled6k3346by" path="res://assets/graphics/decals/blood.png" id="6_k0asf"]
+[ext_resource type="Texture2D" uid="uid://bkmal8d4twxex" path="res://assets/graphics/lights/overlays/infrastructure.png" id="6_y06dv"]
+[ext_resource type="Texture2D" uid="uid://ww2lphmmceec" path="res://assets/graphics/lights/overlays/lattice.png" id="7_q602m"]
+[ext_resource type="Texture2D" uid="uid://cv2t2t8g5olle" path="res://assets/graphics/lights/overlays/hole.png" id="8_gcf78"]
+[ext_resource type="Texture2D" uid="uid://kjb436q8aj0n" path="res://assets/graphics/ground/dirt.png" id="11_6ufto"]
+[ext_resource type="Texture2D" uid="uid://c6jpwomqlnje4" path="res://assets/graphics/lights/textures/circle.png" id="11_7y13m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukfjp"]
+size = Vector2(654, 371)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqxtg"]
+size = Vector2(414, 137)
 
 [node name="Inside" instance=ExtResource("1_22v5y")]
+script = ExtResource("2_30ug3")
 
 [node name="TileMap" type="TileMap" parent="Ground" index="0"]
 rotation = 0.00316375
@@ -28,6 +41,7 @@ layer_1/tile_data = PackedInt32Array(196610, 196608, 2, 196612, 327680, 2, 65540
 [node name="Lights" type="Node2D" parent="Ground/Decorations" index="0"]
 
 [node name="Fan lights" type="Node2D" parent="Ground/Decorations/Lights" index="0"]
+z_index = 2
 
 [node name="LightFanAnimation" parent="Ground/Decorations/Lights/Fan lights" index="0" instance=ExtResource("3_b1yjv")]
 position = Vector2(1357, -586)
@@ -214,7 +228,7 @@ position = Vector2(51.9999, -858)
 rotation = -1.55982
 
 [node name="WallLight2" parent="Ground/Decorations/Lights/Big lights" index="1" instance=ExtResource("5_fcofb")]
-position = Vector2(2694, -846)
+position = Vector2(2689, -1051)
 rotation = 1.58138
 
 [node name="WallLight3" parent="Ground/Decorations/Lights/Big lights" index="2" instance=ExtResource("5_fcofb")]
@@ -249,10 +263,262 @@ rotation = -1.55982
 position = Vector2(2722, -13629)
 rotation = 1.57637
 
+[node name="overlays" type="Node2D" parent="Ground/Decorations/Lights" index="3"]
+z_index = 2
+
+[node name="Infrastructure" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="0"]
+modulate = Color(1, 0.180392, 0, 0.227451)
+position = Vector2(1367.17, -1546.12)
+rotation = -1.56856
+scale = Vector2(1.01842, 5.37574)
+texture = ExtResource("6_y06dv")
+
+[node name="Infrastructure2" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="1"]
+modulate = Color(1, 0.180392, 0, 0.227451)
+position = Vector2(1346, -25.0002)
+rotation = -1.56856
+scale = Vector2(1.01842, 5.37574)
+texture = ExtResource("6_y06dv")
+
+[node name="Lattice" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="2"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1370, -2822)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice2" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="3"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371, -2986)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice3" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="4"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371, -3145)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice4" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="5"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1370.5, -3311.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice5" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="6"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371.5, -3475.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice6" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="7"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371.5, -3634.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice7" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="8"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371.5, -3801)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice8" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="9"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1370.5, -4913.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice9" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="10"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371.5, -5077.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice10" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="11"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371.5, -5236.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice11" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="12"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1371, -5403)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice12" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="13"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1372, -5567)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice13" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="14"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1372, -5726)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice14" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="15"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1372, -5892.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice15" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="16"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1393.5, -6937.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice16" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="17"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1394.5, -7101.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice17" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="18"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1394.5, -7260.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice18" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="19"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1394, -7427)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice19" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="20"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1395, -7591)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice20" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="21"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1395, -7750)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice21" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="22"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1395, -7916.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice22" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="23"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1401.5, -9165.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice23" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="24"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1402.5, -9329.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice24" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="25"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1402.5, -9488.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice25" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="26"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1402, -9655)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice26" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="27"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1403, -9819)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice27" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="28"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1403, -9978)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice28" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="29"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1403, -10144.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice29" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="30"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1409.5, -11091.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice30" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="31"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1410.5, -11255.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice31" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="32"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1410.5, -11414.5)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice32" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="33"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1410, -11581)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice33" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="34"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1411, -11745)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice34" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="35"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1411, -11904)
+texture = ExtResource("7_q602m")
+
+[node name="Lattice35" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="36"]
+modulate = Color(1, 1, 0.607843, 0.345098)
+position = Vector2(1411, -12070.5)
+texture = ExtResource("7_q602m")
+
+[node name="Hole" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="37"]
+modulate = Color(1, 0.137255, 0, 0.172549)
+position = Vector2(-3724.5, -5446.38)
+scale = Vector2(3.49372, 3.30381)
+texture = ExtResource("8_gcf78")
+
+[node name="Hole2" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="38"]
+modulate = Color(1, 0.137255, 0, 0.172549)
+position = Vector2(6871, -5446)
+scale = Vector2(3.49372, 3.30381)
+texture = ExtResource("8_gcf78")
+
+[node name="Hole3" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="39"]
+modulate = Color(1, 0.137255, 0, 0.172549)
+position = Vector2(6934, -3249)
+scale = Vector2(3.49372, 3.30381)
+texture = ExtResource("8_gcf78")
+
+[node name="Hole4" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="40"]
+modulate = Color(1, 0.137255, 0, 0.172549)
+position = Vector2(-3749, -3410)
+scale = Vector2(3.49372, 3.30381)
+texture = ExtResource("8_gcf78")
+
 [node name="Blood" type="Sprite2D" parent="Ground/Decorations" index="1"]
 position = Vector2(1348, 881)
 texture = ExtResource("6_k0asf")
 
+[node name="Sprite2D" type="Sprite2D" parent="Ground" index="2"]
+z_index = -1
+texture_repeat = 2
+position = Vector2(2025.5, -7080.5)
+scale = Vector2(4.9852, 5.89363)
+texture = ExtResource("11_6ufto")
+region_enabled = true
+region_rect = Rect2(-1238.89, -1353.91, 4055.73, 3375.98)
+
 [node name="Player" parent="." index="2"]
-position = Vector2(1335, 1242)
+position = Vector2(1360, 1166)
 rotation = -1.85796
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="7"]
+energy = 2.0
+texture = ExtResource("11_7y13m")
+texture_scale = 2.0
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="3"]
+color = Color(0.109804, 0.141176, 0.141176, 1)
+energy = 7.05
+blend_mode = 1
+
+[node name="Area2D" type="Area2D" parent="." index="4"]
+position = Vector2(1266, 545)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(99, 506)
+shape = SubResource("RectangleShape2D_ukfjp")
+
+[node name="Area2D2" type="Area2D" parent="." index="5"]
+position = Vector2(1261, 727)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+position = Vector2(110, 644.5)
+shape = SubResource("RectangleShape2D_nqxtg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_body_entered_inside_level"]

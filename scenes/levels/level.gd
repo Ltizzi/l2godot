@@ -55,11 +55,12 @@ func _on_house_body_enter(body):
 
 func _on_house_body_exit(body):
 	#vuelve el estado normal de luz
-	var occluder = body.get_node("LightOccluder2D")
-	occluder.occluder_light_mask = 2
-	
-	#tween q hace zoom out cuando el player sale
-	var tween = get_tree().create_tween()
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.43, 0.43), 1).set_trans(Tween.TRANS_QUAD)
+	if body.name == "Player":
+		var occluder = body.get_node("LightOccluder2D")
+		occluder.occluder_light_mask = 2
+		
+		#tween q hace zoom out cuando el player sale
+		var tween = get_tree().create_tween()
+		tween.tween_property($Player/Camera2D, "zoom", Vector2(0.43, 0.43), 1).set_trans(Tween.TRANS_QUAD)
 
 #

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b24o8qsd434dj"]
+[gd_scene load_steps=17 format=3 uid="uid://b24o8qsd434dj"]
 
 [ext_resource type="PackedScene" uid="uid://fgdmieqnsupj" path="res://scenes/levels/level.tscn" id="1_2q7c8"]
 [ext_resource type="Texture2D" uid="uid://xcs0yrug0qsy" path="res://assets/graphics/ground/stones.png" id="2_prg5n"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_t3xim"]
+[ext_resource type="PackedScene" uid="uid://ng20m2bfw426" path="res://scenes/levels/inside.tscn" id="3_um6mf"]
 [ext_resource type="TileSet" uid="uid://cxooomk5mcxbp" path="res://scenes/levels/outside.tres" id="4_75ly7"]
 [ext_resource type="PackedScene" uid="uid://cn2pnxckqgthg" path="res://scenes/buildings/house.tscn" id="5_d3vih"]
 [ext_resource type="Texture2D" uid="uid://b2mev1xavhord" path="res://assets/graphics/decals/dirt_patch.png" id="6_qqa1b"]
@@ -18,6 +19,7 @@
 
 [node name="Outside" instance=ExtResource("1_2q7c8")]
 script = ExtResource("2_t3xim")
+level_scene = ExtResource("3_um6mf")
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 modulate = Color(0.831373, 0.729412, 0.729412, 1)

@@ -1,6 +1,11 @@
+res://scenes/levels/inside.tscn
+res://scenes/levels/outside.tres
+res://scenes/levels/inside.tres
 res://scenes/levels/level.tscn
 res://scenes/levels/outside.tscn
+res://scenes/levels/inside.gd
+res://scenes/player/player.tscn
 res://scenes/buildings/house.tscn
-res://scenes/objects/item_container.tscn
-res://scenes/objects/box_2.tscn
-res://scenes/levels/inside.tscn
+res://scenes/projectiles/laser.tscn
+res://scenes/levels/outside.gd
+res://scenes/levels/level.gd
