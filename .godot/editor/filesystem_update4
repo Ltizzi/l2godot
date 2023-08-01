@@ -11,3 +11,8 @@ res://globals/globals.gd
 res://scenes/player/player.gd
 res://scenes/levels/level.gd
 res://scenes/User Interface/ui.gd
+res://scenes/User Interface/ui.tres
+res://globals/transition_layer.tscn
+res://globals/transition_layer.gd
+res://scenes/levels/outside.gd
+res://scenes/levels/inside.gd

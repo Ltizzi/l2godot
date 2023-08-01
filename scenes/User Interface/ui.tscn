@@ -36,7 +36,7 @@ theme = ExtResource("1_c8c4k")
 [node name="Label" type="Label" parent="BulletCounter/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_qc8eu")
-text = "0"
+text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -66,6 +66,7 @@ grow_vertical = 2
 theme = ExtResource("1_c8c4k")
 
 [node name="Label" type="Label" parent="GranadeCounter/VBoxContainer"]
+modulate = Color(0.247059, 0.992157, 0.462745, 1)
 layout_mode = 2
 text = "0	"
 horizontal_alignment = 1

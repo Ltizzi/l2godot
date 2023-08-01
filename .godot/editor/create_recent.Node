@@ -1,14 +1,15 @@
+AnimationPlayer
+ColorRect
+TextureRect
+CanvasLayer
 MarginContainer
 TextureProgressBar
 ProgressBar
 VBoxContainer
-TextureRect
 Label
 Control
 HBoxContainer
 GridContainer
-ColorRect
-CanvasLayer
 Button
 Sprite2D
 PointLight2D
@@ -20,7 +21,6 @@ Node2D
 Node
 TileMap
 StaticBody2D
-AnimationPlayer
 GPUParticles2D
 Timer
 AnimatedSprite2D
