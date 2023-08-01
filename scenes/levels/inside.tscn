@@ -240,7 +240,7 @@ position = Vector2(-2350, -5291)
 rotation = 1.54968
 
 [node name="WallLight10" parent="Ground/Decorations/Lights/Big lights" index="4" instance=ExtResource("5_fcofb")]
-position = Vector2(6054, -5248)
+position = Vector2(5519, -5173)
 rotation = -1.57193
 
 [node name="WallLight4" parent="Ground/Decorations/Lights/Big lights" index="5" instance=ExtResource("5_fcofb")]
@@ -265,6 +265,7 @@ rotation = 1.57637
 
 [node name="overlays" type="Node2D" parent="Ground/Decorations/Lights" index="3"]
 z_index = 2
+position = Vector2(54, 7)
 
 [node name="Infrastructure" type="Sprite2D" parent="Ground/Decorations/Lights/overlays" index="0"]
 modulate = Color(1, 0.180392, 0, 0.227451)

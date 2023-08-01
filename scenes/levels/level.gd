@@ -9,8 +9,6 @@ var granade_scene: PackedScene = preload("res://scenes/projectiles/granade.tscn"
 
 
 
-
-
 func _on_player_shooted_laser(pos, tar_dir):
 #	print("laser from level")
 	var laser = laser_scene.instantiate() as Area2D
@@ -19,6 +17,8 @@ func _on_player_shooted_laser(pos, tar_dir):
 	laser.rotation_degrees = rad_to_deg(tar_dir.angle()) + 90
 	laser.direction = tar_dir
 	$Projectiles.add_child(laser)
+	$UI.update_laser_text()
+	
 
 
 func _on_player_throwed_granade(pos, tar_dir):
@@ -27,7 +27,7 @@ func _on_player_throwed_granade(pos, tar_dir):
 	granade.position = pos
 	granade.linear_velocity = tar_dir * granade.speed
 	$Projectiles.add_child(granade)
-
+	$UI.update_granade_text()
 
 
 

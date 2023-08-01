@@ -1,3 +1,15 @@
+MarginContainer
+TextureProgressBar
+ProgressBar
+VBoxContainer
+TextureRect
+Label
+Control
+HBoxContainer
+GridContainer
+ColorRect
+CanvasLayer
+Button
 Sprite2D
 PointLight2D
 DirectionalLight2D

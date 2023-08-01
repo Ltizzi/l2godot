@@ -1,11 +1,13 @@
-res://scenes/levels/inside.tscn
-res://scenes/levels/outside.tres
-res://scenes/levels/inside.tres
 res://scenes/levels/level.tscn
+res://scenes/levels/inside.tres
+res://scenes/levels/outside.tres
 res://scenes/levels/outside.tscn
-res://scenes/levels/inside.gd
 res://scenes/player/player.tscn
 res://scenes/buildings/house.tscn
+res://scenes/levels/inside.tscn
 res://scenes/projectiles/laser.tscn
-res://scenes/levels/outside.gd
+res://scenes/User Interface/ui.tscn
+res://globals/globals.gd
+res://scenes/player/player.gd
 res://scenes/levels/level.gd
+res://scenes/User Interface/ui.gd

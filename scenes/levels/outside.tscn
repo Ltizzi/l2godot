@@ -83,6 +83,7 @@ position = Vector2(10, 524)
 position = Vector2(1072, 488)
 
 [node name="LightFanAnimation" parent="Ground/Decorations" index="4" instance=ExtResource("13_60sjy")]
+z_index = 2
 position = Vector2(2876, 2255)
 scale = Vector2(0.912398, 0.912398)
 

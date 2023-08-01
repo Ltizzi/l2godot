@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://crxqn41t8qyhe"]
+
+[ext_resource type="FontFile" uid="uid://4nbxncn3slai" path="res://assets/graphics/ui/subatomic.tsoonami.ttf" id="1_81yhs"]
+[ext_resource type="Theme" uid="uid://dhkx88gno8ol6" path="res://scenes/User Interface/ui.tres" id="1_c8c4k"]
+[ext_resource type="Script" path="res://scenes/User Interface/ui.gd" id="1_fbaws"]
+[ext_resource type="Texture2D" uid="uid://ciye31o0f067h" path="res://assets/graphics/ui/bullet.png" id="1_iwxqb"]
+[ext_resource type="Texture2D" uid="uid://x1tf8ck5d04v" path="res://assets/graphics/ui/grenade.png" id="2_2pxrm"]
+[ext_resource type="Texture2D" uid="uid://xn7s50612qdr" path="res://assets/graphics/ui/progress_bar/bg.png" id="5_78e52"]
+[ext_resource type="Texture2D" uid="uid://dcfif1g7awyi5" path="res://assets/graphics/ui/progress_bar/over.png" id="6_fsgdc"]
+[ext_resource type="Texture2D" uid="uid://bcffhnftetf5i" path="res://assets/graphics/ui/progress_bar/progress.png" id="7_knqjg"]
+
+[sub_resource type="Theme" id="Theme_qc8eu"]
+default_font = ExtResource("1_81yhs")
+default_font_size = 24
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fbaws")
+
+[node name="BulletCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.01
+anchor_top = 0.95
+anchor_right = 0.01
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BulletCounter"]
+layout_mode = 2
+offset_top = 5.40002
+offset_right = 19.0
+offset_bottom = 75.4
+theme = ExtResource("1_c8c4k")
+
+[node name="Label" type="Label" parent="BulletCounter/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_qc8eu")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BulletCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_iwxqb")
+expand_mode = 4
+
+[node name="GranadeCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.06
+anchor_top = 0.955
+anchor_right = 0.06
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GranadeCounter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c8c4k")
+
+[node name="Label" type="Label" parent="GranadeCounter/VBoxContainer"]
+layout_mode = 2
+text = "0	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GranadeCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2pxrm")
+expand_mode = 4
+
+[node name="HealthBar" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("5_78e52")
+texture_over = ExtResource("6_fsgdc")
+texture_progress = ExtResource("7_knqjg")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://fgdmieqnsupj"]
+[gd_scene load_steps=4 format=3 uid="uid://fgdmieqnsupj"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_3or8a"]
+[ext_resource type="PackedScene" uid="uid://crxqn41t8qyhe" path="res://scenes/User Interface/ui.tscn" id="3_mn78x"]
 [ext_resource type="PackedScene" uid="uid://dufu0uaix7jdk" path="res://scenes/player/player.tscn" id="4_ajfj7"]
 
 [node name="Level" type="Node2D"]
@@ -15,6 +16,8 @@ z_index = 6
 z_index = 1
 position = Vector2(433, 450)
 speed = 705
+
+[node name="UI" parent="." instance=ExtResource("3_mn78x")]
 
 [connection signal="player_shooted_laser" from="Player" to="." method="_on_player_shooted_laser"]
 [connection signal="player_throwed_granade" from="Player" to="." method="_on_player_throwed_granade"]

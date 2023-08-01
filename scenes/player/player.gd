@@ -11,6 +11,8 @@ var can_throw_granade: bool = true
 var just_pressed_primary_action = false
 var just_pressed_secondary_action = false
 
+
+
 func _process(_delta): #con _ no se usa delta
 	
 	#movement input
@@ -27,8 +29,9 @@ func _process(_delta): #con _ no se usa delta
 	var pressed_throw_granade = Input.is_action_pressed("secondary action")
 	var target_direction: Vector2 = (get_global_mouse_position() - position).normalized()
 	
-	if pressed_shoot_laser and can_shoot_laser:
+	if pressed_shoot_laser and can_shoot_laser and Globals.laser_amount > 0:
 		#randomly selected a marked 2D for the laser start
+		Globals.laser_amount -= 1
 		$Arma/LaserStartPosition/GPUParticles2D.emitting = true
 		var laser_markers = $Arma/LaserStartPosition.get_children()
 		var selected_laser = laser_markers[randi() % laser_markers.size()]
@@ -45,8 +48,9 @@ func _process(_delta): #con _ no se usa delta
 		just_pressed_primary_action = false
 	
 	#granade shooting input
-	if pressed_throw_granade and can_throw_granade:
+	if pressed_throw_granade and can_throw_granade and Globals.granade_amount > 0:
 	#	print('granade throwed')
+		Globals.granade_amount -= 1
 		var granade_launcher_marker = $Arma/GranadeLauncherPosition/Marker2D
 		player_throwed_granade.emit(granade_launcher_marker.global_position, target_direction)
 		just_pressed_secondary_action = true
