@@ -27,10 +27,12 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BulletCounter"]
-layout_mode = 2
-offset_top = 5.40002
-offset_right = 19.0
-offset_bottom = 75.4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_c8c4k")
 
 [node name="Label" type="Label" parent="BulletCounter/VBoxContainer"]
@@ -92,7 +94,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar"]
 layout_mode = 2
-value = 100.0
+value = 60.0
 texture_under = ExtResource("5_78e52")
 texture_over = ExtResource("6_fsgdc")
 texture_progress = ExtResource("7_knqjg")

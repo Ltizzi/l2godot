@@ -64,3 +64,7 @@ func _on_house_body_exit(body):
 		tween.tween_property($Player/Camera2D, "zoom", Vector2(0.43, 0.43), 1).set_trans(Tween.TRANS_QUAD)
 
 #
+
+
+#func _on_player_update_stats():
+#	$UI.update_stats()

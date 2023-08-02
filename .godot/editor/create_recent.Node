@@ -1,3 +1,7 @@
+PointLight2D
+CollisionShape2D
+Sprite2D
+Area2D
 AnimationPlayer
 ColorRect
 TextureRect
@@ -11,11 +15,7 @@ Control
 HBoxContainer
 GridContainer
 Button
-Sprite2D
-PointLight2D
 DirectionalLight2D
-CollisionShape2D
-Area2D
 CollisionPolygon2D
 Node2D
 Node

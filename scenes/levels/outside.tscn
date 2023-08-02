@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b24o8qsd434dj"]
+[gd_scene load_steps=17 format=3 uid="uid://b24o8qsd434dj"]
 
 [ext_resource type="PackedScene" uid="uid://fgdmieqnsupj" path="res://scenes/levels/level.tscn" id="1_2q7c8"]
 [ext_resource type="Texture2D" uid="uid://xcs0yrug0qsy" path="res://assets/graphics/ground/stones.png" id="2_prg5n"]
@@ -15,9 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://bqsykdy2py8at" path="res://scenes/objects/light_fan_animation.tscn" id="13_60sjy"]
 [ext_resource type="PackedScene" uid="uid://bcm8fua6h335k" path="res://scenes/objects/gate.tscn" id="14_rwwdc"]
 [ext_resource type="PackedScene" uid="uid://deye6qdqod16f" path="res://scenes/objects/simple_light.tscn" id="15_jhkvl"]
+[ext_resource type="PackedScene" uid="uid://bwahxk2x1nfnp" path="res://scenes/items/item.tscn" id="16_0cu85"]
 
 [node name="Outside" instance=ExtResource("1_2q7c8")]
 script = ExtResource("2_t3xim")
+
+[node name="Ground" parent="." index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Soil" type="Sprite2D" parent="Ground" index="0"]
 modulate = Color(0.831373, 0.729412, 0.729412, 1)
@@ -46,6 +51,8 @@ position = Vector2(3429, 652)
 rotation = 0.829031
 
 [node name="Decorations" type="Node2D" parent="Ground" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Dirt patch" type="Sprite2D" parent="Ground/Decorations" index="0"]
 modulate = Color(0.917647, 0.929412, 0.831373, 0.988235)
@@ -89,6 +96,8 @@ scale = Vector2(0.912398, 0.912398)
 position = Vector2(483, -622)
 
 [node name="Luces" type="Node2D" parent="Ground" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="SimpleLight" parent="Ground/Luces" index="0" instance=ExtResource("15_jhkvl")]
 position = Vector2(16, 192)
@@ -119,6 +128,9 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.7
 shadow_item_cull_mask = 2
+
+[node name="Item" parent="." index="6" instance=ExtResource("16_0cu85")]
+position = Vector2(608, 1046)
 
 [connection signal="body_enter" from="Ground/House" to="." method="_on_house_body_enter"]
 [connection signal="body_exit" from="Ground/House" to="." method="_on_house_body_exit"]
