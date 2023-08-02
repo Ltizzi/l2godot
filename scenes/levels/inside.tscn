@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cv2t2t8g5olle" path="res://assets/graphics/lights/overlays/hole.png" id="8_gcf78"]
 [ext_resource type="Texture2D" uid="uid://kjb436q8aj0n" path="res://assets/graphics/ground/dirt.png" id="11_6ufto"]
 [ext_resource type="Texture2D" uid="uid://c6jpwomqlnje4" path="res://assets/graphics/lights/textures/circle.png" id="11_7y13m"]
-[ext_resource type="PackedScene" uid="uid://bwahxk2x1nfnp" path="res://scenes/items/item.tscn" id="13_mkcju"]
+[ext_resource type="PackedScene" uid="uid://df8x5jnf715hb" path="res://scenes/objects/crate.tscn" id="12_oojio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukfjp"]
 size = Vector2(654, 371)
@@ -500,14 +500,18 @@ texture = ExtResource("11_6ufto")
 region_enabled = true
 region_rect = Rect2(-1238.89, -1353.91, 4055.73, 3375.98)
 
-[node name="Player" parent="." index="2"]
-position = Vector2(1360, 1166)
-rotation = -1.85796
+[node name="Containers" type="Node2D" parent="Ground" index="3"]
 
-[node name="PointLight2D" type="PointLight2D" parent="Player" index="7"]
-energy = 2.0
-texture = ExtResource("11_7y13m")
-texture_scale = 2.0
+[node name="Crate" parent="Ground/Containers" index="0" instance=ExtResource("12_oojio")]
+position = Vector2(587, -1971)
+
+[node name="Crate2" parent="Ground/Containers" index="1" instance=ExtResource("12_oojio")]
+position = Vector2(-4891, -3125)
+rotation = -1.61291
+
+[node name="Crate3" parent="Ground/Containers" index="2" instance=ExtResource("12_oojio")]
+position = Vector2(1364, -14680)
+rotation = -0.0424574
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="3"]
 color = Color(0.109804, 0.141176, 0.141176, 1)
@@ -528,8 +532,14 @@ position = Vector2(1261, 727)
 position = Vector2(110, 644.5)
 shape = SubResource("RectangleShape2D_nqxtg")
 
-[node name="Item" parent="." index="7" instance=ExtResource("13_mkcju")]
-position = Vector2(1353, 585)
+[node name="Player" parent="." index="6"]
+position = Vector2(1360, 1166)
+rotation = -1.85796
+
+[node name="PointLight2D" type="PointLight2D" parent="Player" index="7"]
+energy = 2.0
+texture = ExtResource("11_7y13m")
+texture_scale = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_body_entered_inside_level"]

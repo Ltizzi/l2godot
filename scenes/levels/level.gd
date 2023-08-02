@@ -4,8 +4,11 @@ class_name World
 
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var granade_scene: PackedScene = preload("res://scenes/projectiles/granade.tscn")
+var item_scene: PackedScene = preload("res://scenes/items/item.tscn")
 
-
+func _ready():
+	for container in get_tree().get_nodes_in_group("Container"):
+		container.connect("open", _on_container_open)
 
 
 
@@ -68,3 +71,12 @@ func _on_house_body_exit(body):
 
 #func _on_player_update_stats():
 #	$UI.update_stats()
+
+
+func _on_container_open(pos, dir):
+	var item = item_scene.instantiate()
+	item.position = pos
+	item.direction = dir
+	
+	$Items.call_deferred('add_child', item)
+

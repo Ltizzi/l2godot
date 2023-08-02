@@ -11,8 +11,7 @@ var green: Color = Color("3ffd76")
 var red: Color = Color(0.9, 0, 0, 1)#"eb1139"
 
 func _ready():
-	Globals.connect("health_change", update_health_text)
-	Globals.connect("ammo_change", update_stats)
+	Globals.connect("stats_change", update_stats)
 	update_stats()
 
 func update_stats():

@@ -10,3 +10,14 @@ res://scenes/levels/level.gd
 res://scenes/User Interface/ui.gd
 res://globals/globals.gd
 res://scenes/User Interface/ui.tscn
+res://scenes/objects/toilet.tscn
+res://scenes/objects/box.tscn
+res://scenes/objects/box_2.tscn
+res://scenes/objects/item_container.tscn
+res://scenes/objects/item_container.gd
+res://scenes/objects/crate.gd
+res://scenes/buildings/house.tscn
+res://scenes/objects/crate.tscn
+res://scenes/buildings/house.gd
+res://scenes/projectiles/laser.tscn
+res://Toilet.gd

@@ -1,6 +1,8 @@
+Node2D
+Marker2D
+Sprite2D
 PointLight2D
 CollisionShape2D
-Sprite2D
 Area2D
 AnimationPlayer
 ColorRect
@@ -17,7 +19,6 @@ GridContainer
 Button
 DirectionalLight2D
 CollisionPolygon2D
-Node2D
 Node
 TileMap
 StaticBody2D
@@ -27,6 +28,5 @@ AnimatedSprite2D
 LightOccluder2D
 OccluderInstance3D
 Camera2D
-Marker2D
 RigidBody2D
 CharacterBody2D

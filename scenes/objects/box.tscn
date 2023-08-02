@@ -10,9 +10,9 @@ size = Vector2(352, 253)
 [node name="Box" instance=ExtResource("1_wxwig")]
 script = ExtResource("2_8shk3")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="BaseSprite" parent="." index="0"]
 texture = ExtResource("2_jrpvf")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_7ung3")

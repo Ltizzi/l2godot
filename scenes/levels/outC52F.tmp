@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b24o8qsd434dj"]
+[gd_scene load_steps=19 format=3 uid="uid://b24o8qsd434dj"]
 
 [ext_resource type="PackedScene" uid="uid://fgdmieqnsupj" path="res://scenes/levels/level.tscn" id="1_2q7c8"]
 [ext_resource type="Texture2D" uid="uid://xcs0yrug0qsy" path="res://assets/graphics/ground/stones.png" id="2_prg5n"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bqsykdy2py8at" path="res://scenes/objects/light_fan_animation.tscn" id="13_60sjy"]
 [ext_resource type="PackedScene" uid="uid://bcm8fua6h335k" path="res://scenes/objects/gate.tscn" id="14_rwwdc"]
 [ext_resource type="PackedScene" uid="uid://deye6qdqod16f" path="res://scenes/objects/simple_light.tscn" id="15_jhkvl"]
+[ext_resource type="PackedScene" uid="uid://bwahxk2x1nfnp" path="res://scenes/items/item.tscn" id="16_0cu85"]
 [ext_resource type="PackedScene" uid="uid://df8x5jnf715hb" path="res://scenes/objects/crate.tscn" id="18_6upoo"]
+[ext_resource type="PackedScene" uid="uid://np7grsukt6l4" path="res://scenes/objects/toilet.tscn" id="18_htu67"]
 
 [node name="Outside" instance=ExtResource("1_2q7c8")]
 script = ExtResource("2_t3xim")
@@ -107,15 +109,6 @@ rotation = -0.220354
 position = Vector2(1068, 198)
 rotation = 0.258657
 
-[node name="Containers" type="Node2D" parent="Ground" index="6"]
-
-[node name="Crate" parent="Ground/Containers" index="0" instance=ExtResource("18_6upoo")]
-position = Vector2(5626, 4788)
-rotation = 1.99373
-scale = Vector2(1, 1)
-collision_layer = 1
-collision_mask = 1
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="3"]
 light_mask = 2
 z_index = 2
@@ -138,9 +131,14 @@ shadow_filter = 1
 shadow_filter_smooth = 2.7
 shadow_item_cull_mask = 2
 
-[node name="Player" parent="." index="5"]
-position = Vector2(4354, 2456)
-rotation = 2.01406
+[node name="Item" parent="." index="6" instance=ExtResource("16_0cu85")]
+position = Vector2(608, 1046)
+
+[node name="Toilet" parent="." index="7" instance=ExtResource("18_htu67")]
+position = Vector2(160, 987)
+
+[node name="Crate" parent="." index="8" instance=ExtResource("18_6upoo")]
+position = Vector2(1098, 965)
 
 [connection signal="body_enter" from="Ground/House" to="." method="_on_house_body_enter"]
 [connection signal="body_exit" from="Ground/House" to="." method="_on_house_body_exit"]
