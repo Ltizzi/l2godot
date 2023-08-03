@@ -9,14 +9,19 @@ script = ExtResource("1_3or8a")
 
 [node name="Ground" type="Node2D" parent="."]
 
+[node name="Decals" type="Node2D" parent="."]
+z_index = 1
+
 [node name="Items" type="Node2D" parent="."]
 z_index = 5
 
 [node name="Projectiles" type="Node2D" parent="."]
 z_index = 6
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("4_ajfj7")]
-z_index = 1
+z_index = 2
 position = Vector2(433, 450)
 speed = 705
 

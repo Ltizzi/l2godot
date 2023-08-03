@@ -1,3 +1,4 @@
+res://scenes/enemies
 res://scenes/objects
 res://scenes/items
 res://globals
@@ -6,5 +7,4 @@ res://scenes/levels
 E:/Godot/projectos/game tutorial 11 horas/scenes/projectiles
 res://scenes/buildings
 res://scenes/projectiles
-res://scenes/enemies
 res://scenes

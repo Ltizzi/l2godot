@@ -1,9 +1,11 @@
-Node2D
+Timer
 Marker2D
-Sprite2D
-PointLight2D
+Node2D
 CollisionShape2D
 Area2D
+Sprite2D
+CharacterBody2D
+PointLight2D
 AnimationPlayer
 ColorRect
 TextureRect
@@ -23,10 +25,8 @@ Node
 TileMap
 StaticBody2D
 GPUParticles2D
-Timer
 AnimatedSprite2D
 LightOccluder2D
 OccluderInstance3D
 Camera2D
 RigidBody2D
-CharacterBody2D

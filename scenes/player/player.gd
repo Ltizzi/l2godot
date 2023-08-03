@@ -22,6 +22,8 @@ func _process(_delta): #con _ no se usa delta
 	velocity = direction * speed
 	move_and_slide()
 	
+	Globals.player_position = global_position
+	
 	# rotation handler
 	look_at(get_global_mouse_position())
 	
