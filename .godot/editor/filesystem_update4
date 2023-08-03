@@ -13,3 +13,4 @@ res://scenes/projectiles/granade.tscn
 res://scenes/projectiles/granade.gd
 res://scenes/items/item.tscn
 res://scenes/items/item.gd
+res://scenes/enemies/scout.gdshader

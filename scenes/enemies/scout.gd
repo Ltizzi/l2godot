@@ -27,6 +27,11 @@ func _process(_delta):
 func hit():
 	print("scout hitted!")
 	health -= 10
+	for i in range(1):
+		$Sprite2D.material.set_shader_parameter("progress", 1.0)
+		await get_tree().create_timer(0.04).timeout
+		$Sprite2D.material.set_shader_parameter("progress", 0)
+		await get_tree().create_timer(0.04).timeout
 	if health <= 0:
 		queue_free()
 		
