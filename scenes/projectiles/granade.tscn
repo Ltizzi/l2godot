@@ -181,7 +181,6 @@ texture = ExtResource("1_wesph")
 shape = SubResource("CircleShape2D_n4mw3")
 
 [node name="Explosion" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.709804)
 z_index = 4
 scale = Vector2(2.375, 2.375)
 texture = ExtResource("3_7p8ci")
@@ -196,6 +195,7 @@ libraries = {
 }
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 color = Color(1, 0, 0.423529, 1)
 energy = 8.07
 texture = ExtResource("4_eins5")

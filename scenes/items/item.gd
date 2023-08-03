@@ -1,7 +1,7 @@
 extends Area2D
 
 var rotation_speed: int = 4
-var types = ['laser','laser','laser', 'granade', 'health']
+var types = ['laser','laser','laser', 'granade', 'health', 'health']
 var type = types[randi() % types.size()]
 
 var direction: Vector2

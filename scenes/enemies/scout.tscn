@@ -9,7 +9,7 @@ radius = 44.0454
 [sub_resource type="CircleShape2D" id="CircleShape2D_aditm"]
 radius = 653.501
 
-[node name="Scout" type="CharacterBody2D" groups=["Scouts"]]
+[node name="Scout" type="CharacterBody2D" groups=["Entities", "Scouts"]]
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 11
@@ -33,12 +33,13 @@ shape = SubResource("CircleShape2D_aditm")
 [node name="LaserSpawnPositions" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="LaserSpawnPositions"]
-position = Vector2(115, -25.5)
+position = Vector2(119.5, -26)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserSpawnPositions"]
-position = Vector2(122.5, 14.5)
+position = Vector2(130.5, 14.5)
 
 [node name="LaserCooldown" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

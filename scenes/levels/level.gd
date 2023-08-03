@@ -11,6 +11,8 @@ func _ready():
 		container.connect("open", _on_container_open)
 	for scout in get_tree().get_nodes_in_group("Scouts"):
 		scout.connect('laser', _on_scout_laser)
+	for entity in get_tree().get_nodes_in_group("Entity"):
+		print(entity)
 
 
 

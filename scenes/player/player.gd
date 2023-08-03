@@ -73,6 +73,16 @@ func _on_laser_cooldown_timer_timeout():
 
 func _on_granade_cooldown_timer_timeout():
 	can_throw_granade = true
+	
+
+
+func hit():
+	Globals.health-=10
+	
+	
+
+func explossion_hit():
+	Globals.health-=50
 
 
 #func add_item(type: String) -> void:

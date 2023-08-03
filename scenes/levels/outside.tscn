@@ -148,6 +148,10 @@ position = Vector2(75, 1238)
 position = Vector2(4354, 2456)
 rotation = 2.01406
 
+[node name="Crate" parent="." index="9" instance=ExtResource("18_6upoo")]
+position = Vector2(-112, 1376)
+rotation = 1.28943
+
 [connection signal="body_enter" from="Ground/House" to="." method="_on_house_body_enter"]
 [connection signal="body_exit" from="Ground/House" to="." method="_on_house_body_exit"]
 [connection signal="player_entered_gate" from="Ground/Gate" to="." method="_on_gate_player_entered_gate"]
