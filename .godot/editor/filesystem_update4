@@ -1,3 +1,10 @@
 res://scenes/levels/outside.tres
 res://scenes/enemies/scout.gdshader
 res://scenes/levels/inside.tres
+res://scenes/enemies/bug.tscn
+res://scenes/levels/outside.tscn
+res://scenes/levels/level.tscn
+res://scenes/levels/inside.tscn
+res://scenes/enemies/bug.gd
+res://scenes/player/player.tscn
+res://scenes/enemies/scout.tscn
