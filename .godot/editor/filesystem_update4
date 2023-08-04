@@ -1,16 +1,3 @@
-res://scenes/levels/level.tscn
 res://scenes/levels/outside.tres
-res://scenes/levels/inside.tres
-res://scenes/levels/outside.tscn
-res://scenes/levels/inside.tscn
-res://scenes/levels/level.gd
-res://scenes/levels/outside.gd
-res://scenes/enemies/scout.tscn
-res://globals/globals.gd
-res://scenes/enemies/scout.gd
-res://scenes/player/player.gd
-res://scenes/projectiles/granade.tscn
-res://scenes/projectiles/granade.gd
-res://scenes/items/item.tscn
-res://scenes/items/item.gd
 res://scenes/enemies/scout.gdshader
+res://scenes/levels/inside.tres

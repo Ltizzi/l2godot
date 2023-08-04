@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ceeadqcfre6od"]
+
+[node name="Bug" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="NoticeArea2D" type="Area2D" parent="."]
+
+[node name="AttackArea2D" type="Area2D" parent="."]
