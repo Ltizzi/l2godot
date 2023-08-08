@@ -106,6 +106,7 @@ texture = ExtResource("1_omf8a")
 shape = SubResource("CircleShape2D_ieg5n")
 
 [node name="AggroArea" type="Area2D" parent="."]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
 shape = SubResource("CircleShape2D_h8h0d")

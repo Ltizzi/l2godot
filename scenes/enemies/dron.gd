@@ -5,7 +5,7 @@ var pos: Vector2 = Vector2.ZERO
 
 var active: bool = false
 
-@export var health: int = 50
+@export var health: int = 10
 
 var exploded: bool = false
 
@@ -21,14 +21,13 @@ func _process(delta):
 		var colission = move_and_collide(velocity * delta)
 		if !exploded:
 			look_at(Globals.player_position)
-			speed += 10
+			speed += 30
 			if colission:
 				speed = 0
 				$AnimationPlayer.play("explossion")
 				exploded = true
 				var id = colission.get_collider_id()
 				var instance_object = instance_from_id(id)
-				print(instance_object)
 				if "explossion_hit" in instance_object:
 					instance_object.explossion_hit()
 
