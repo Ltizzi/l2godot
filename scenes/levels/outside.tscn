@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b24o8qsd434dj"]
+[gd_scene load_steps=20 format=3 uid="uid://b24o8qsd434dj"]
 
 [ext_resource type="PackedScene" uid="uid://fgdmieqnsupj" path="res://scenes/levels/level.tscn" id="1_2q7c8"]
 [ext_resource type="Texture2D" uid="uid://xcs0yrug0qsy" path="res://assets/graphics/ground/stones.png" id="2_prg5n"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://52f3qfgo7vxx" path="res://scenes/enemies/scout.tscn" id="17_xbqun"]
 [ext_resource type="PackedScene" uid="uid://df8x5jnf715hb" path="res://scenes/objects/crate.tscn" id="18_6upoo"]
 [ext_resource type="PackedScene" uid="uid://ceeadqcfre6od" path="res://scenes/enemies/bug.tscn" id="18_23mmj"]
+[ext_resource type="PackedScene" uid="uid://cdg6h0fsw66i1" path="res://scenes/enemies/dron.tscn" id="19_fgdba"]
 
 [node name="Outside" instance=ExtResource("1_2q7c8")]
 script = ExtResource("2_t3xim")
@@ -147,7 +148,10 @@ shadow_item_cull_mask = 2
 position = Vector2(75, 1238)
 
 [node name="Bug" parent="Enemies" index="1" instance=ExtResource("18_23mmj")]
-position = Vector2(1818, 2671)
+position = Vector2(4745, 1067)
+
+[node name="Dron" parent="Enemies" index="2" instance=ExtResource("19_fgdba")]
+position = Vector2(506, 2688)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(4354, 2456)

@@ -1,18 +1,124 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdg6h0fsw66i1"]
+[gd_scene load_steps=11 format=3 uid="uid://cdg6h0fsw66i1"]
 
 [ext_resource type="Script" path="res://scenes/enemies/dron.gd" id="1_5a2k0"]
+[ext_resource type="Shader" path="res://scenes/enemies/scout.gdshader" id="1_e4r36"]
 [ext_resource type="Texture2D" uid="uid://vn1uj13kw03x" path="res://assets/graphics/enemies/drone.png" id="1_omf8a"]
+[ext_resource type="Texture2D" uid="uid://bwns6xbxsvssm" path="res://assets/graphics/explosions/explosion_3.png" id="3_kt3uy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tsyt"]
+shader = ExtResource("1_e4r36")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ieg5n"]
 radius = 70.214
 
-[node name="Dron" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8h0d"]
+radius = 1314.02
+
+[sub_resource type="Animation" id="Animation_y63um"]
+resource_name = "explossion"
+length = 2.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.95),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n14ff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl5eu"]
+_data = {
+"RESET": SubResource("Animation_n14ff"),
+"explossion": SubResource("Animation_y63um")
+}
+
+[node name="Dron" type="CharacterBody2D" groups=["Entities"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_5a2k0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0tsyt")
+rotation = 1.5708
 texture = ExtResource("1_omf8a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ieg5n")
+
+[node name="AggroArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_h8h0d")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("3_kt3uy")
+hframes = 8
+vframes = 8
+frame = 48
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pl5eu")
+}
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
