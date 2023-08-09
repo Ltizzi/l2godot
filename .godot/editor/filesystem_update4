@@ -1,9 +1,9 @@
-res://scenes/enemies/dron.tscn
+res://scenes/levels/outside.tscn
 res://scenes/enemies/bug.gd
 res://scenes/levels/outside.tres
 res://scenes/enemies/scout.gdshader
 res://scenes/levels/inside.tres
-res://scenes/levels/outside.tscn
-res://scenes/enemies/dron.gd
+res://scenes/enemies/car.tscn
+res://scenes/enemies/car.gd
 res://scenes/levels/level.tscn
 res://scenes/levels/inside.tscn

@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://besv3u1qe5ck1"]
+
+[ext_resource type="Script" path="res://scenes/enemies/car.gd" id="1_g8fvo"]
+[ext_resource type="Texture2D" uid="uid://dnqk1yr7nyvni" path="res://assets/graphics/car/main.png" id="1_qdqs7"]
+[ext_resource type="Texture2D" uid="uid://cdjnu1kf2c514" path="res://assets/graphics/car/turret.png" id="3_wc55j"]
+[ext_resource type="Texture2D" uid="uid://cxkbxv2v2m7o1" path="res://assets/graphics/explosions/gun.png" id="4_fchqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3iyb5"]
+radius = 1080.0
+
+[sub_resource type="Animation" id="Animation_rgrmy"]
+resource_name = "laser_load"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Turret/RayCast2D/Line2D:width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 15.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Turret/RayCast2D2/Line2D:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 15.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"fire_animation"
+}, {
+"args": [],
+"method": &"fire"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjpgn"]
+_data = {
+"laser_load": SubResource("Animation_rgrmy")
+}
+
+[node name="Car" type="PathFollow2D"]
+script = ExtResource("1_g8fvo")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 11
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-168, -170, -169, -112, -146, -102, -140, -77, -168, -76, -172, -46, -233, -33, -230, 35, -173, 49, -168, 81, -135, 79, -149, 110, -165, 115, -165, 174, -38, 175, -30, 147, -36, 113, -21, 106, 4, 133, 65, 120, 63, 142, 67, 170, 174, 167, 178, 140, 175, 117, 150, 113, 157, 97, 177, 98, 210, 90, 211, 120, 195, 159, 206, 162, 230, 121, 227, 90, 244, 89, 245, 76, 239, 63, 230, 58, 234, 36, 246, 30, 244, -25, 232, -28, 230, -58, 242, -61, 244, -84, 231, -88, 231, -115, 207, -157, 193, -155, 210, -116, 210, -92, 180, -90, 175, -114, 183, -136, 174, -161, 68, -159, 67, -131, 69, -116, 5, -123, -27, -94, -38, -107, -31, -133, -36, -157, -41, -168)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(59, 4)
+rotation = 1.5708
+texture = ExtResource("1_qdqs7")
+
+[node name="AggroArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_3iyb5")
+
+[node name="Turret" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="Turret"]
+position = Vector2(111, -27)
+target_position = Vector2(957, 0)
+
+[node name="Line2D" type="Line2D" parent="Turret/RayCast2D"]
+points = PackedVector2Array(0, 0, 957, 0)
+width = 0.0
+default_color = Color(0.933333, 0, 0.67451, 0.74902)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Turret"]
+position = Vector2(111, 30)
+target_position = Vector2(957, 0)
+
+[node name="Line2D" type="Line2D" parent="Turret/RayCast2D2"]
+points = PackedVector2Array(0, 0, 957, 0)
+width = 0.0
+default_color = Color(0.933333, 0, 0.67451, 0.74902)
+
+[node name="GunShoot" type="Sprite2D" parent="Turret"]
+visible = false
+position = Vector2(218, -4)
+rotation = 1.5708
+texture = ExtResource("4_fchqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Turret"]
+rotation = 1.5708
+texture = ExtResource("3_wc55j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jjpgn")
+}
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]
