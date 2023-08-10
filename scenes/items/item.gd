@@ -36,11 +36,11 @@ func _on_body_entered(body):
 		
 		
 		if type == "health" and Globals.health < 100:
-			Globals.health += 10
+			Globals.health += 20
 			healed = true
 			
 		if type == "laser" and Globals.laser_amount < 40:
-			Globals.laser_amount += 5
+			Globals.laser_amount += 10
 		
 		if type == "granade" and Globals.granade_amount < 10:
 			Globals.granade_amount +=1

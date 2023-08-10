@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxkbxv2v2m7o1" path="res://assets/graphics/explosions/gun.png" id="4_fchqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3iyb5"]
-radius = 1080.0
+radius = 866.021
 
 [sub_resource type="Animation" id="Animation_rgrmy"]
 resource_name = "laser_load"
@@ -83,26 +83,34 @@ shape = SubResource("CircleShape2D_3iyb5")
 
 [node name="RayCast2D" type="RayCast2D" parent="Turret"]
 position = Vector2(111, -27)
-target_position = Vector2(957, 0)
+target_position = Vector2(749, 0)
 
 [node name="Line2D" type="Line2D" parent="Turret/RayCast2D"]
-points = PackedVector2Array(0, 0, 957, 0)
+points = PackedVector2Array(0, 0, 749, 1)
 width = 0.0
 default_color = Color(0.933333, 0, 0.67451, 0.74902)
 
 [node name="RayCast2D2" type="RayCast2D" parent="Turret"]
 position = Vector2(111, 30)
-target_position = Vector2(957, 0)
+target_position = Vector2(749, 0)
 
 [node name="Line2D" type="Line2D" parent="Turret/RayCast2D2"]
-points = PackedVector2Array(0, 0, 957, 0)
+points = PackedVector2Array(0, 0, 748, -1)
 width = 0.0
 default_color = Color(0.933333, 0, 0.67451, 0.74902)
 
 [node name="GunShoot" type="Sprite2D" parent="Turret"]
-visible = false
-position = Vector2(218, -4)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(179, 28)
 rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_fchqi")
+
+[node name="GunShoot2" type="Sprite2D" parent="Turret"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(178, -29)
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_fchqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Turret"]

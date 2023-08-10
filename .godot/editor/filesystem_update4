@@ -7,3 +7,4 @@ res://scenes/enemies/car.tscn
 res://scenes/enemies/car.gd
 res://scenes/levels/level.tscn
 res://scenes/levels/inside.tscn
+res://scenes/items/item.gd
