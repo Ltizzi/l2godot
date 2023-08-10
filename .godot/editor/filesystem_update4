@@ -8,3 +8,8 @@ res://scenes/enemies/car.gd
 res://scenes/levels/level.tscn
 res://scenes/levels/inside.tscn
 res://scenes/items/item.gd
+res://scenes/enemies/hunter.tscn
+res://scenes/enemies/dron.tscn
+res://scenes/enemies/bug.tscn
+res://scenes/enemies/scout.tscn
+res://scenes/enemies/hunter.gd

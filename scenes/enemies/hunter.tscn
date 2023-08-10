@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb80r0gysk51v"]
+
+[ext_resource type="Script" path="res://scenes/enemies/hunter.gd" id="1_qq47f"]
+[ext_resource type="Texture2D" uid="uid://ppxfucmrb48f" path="res://assets/graphics/enemies/hunter/hunter.png" id="1_rfdww"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8yf8"]
+radius = 17.0
+height = 190.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igtme"]
+radius = 1168.91
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ab1uq"]
+radius = 143.711
+
+[node name="Hunter" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(1.225, 1.225)
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_qq47f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_rfdww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q8yf8")
+
+[node name="AggroArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_igtme")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_ab1uq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Timers"]
+autostart = true
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_timer_timeout"]

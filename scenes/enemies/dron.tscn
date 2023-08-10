@@ -16,6 +16,21 @@ radius = 70.214
 [sub_resource type="CircleShape2D" id="CircleShape2D_h8h0d"]
 radius = 1314.02
 
+[sub_resource type="Animation" id="Animation_n14ff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
 [sub_resource type="Animation" id="Animation_y63um"]
 resource_name = "explossion"
 length = 2.1
@@ -71,21 +86,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_n14ff"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Explosion:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [48]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pl5eu"]
 _data = {
 "RESET": SubResource("Animation_n14ff"),
@@ -93,6 +93,7 @@ _data = {
 }
 
 [node name="Dron" type="CharacterBody2D" groups=["Entities"]]
+scale = Vector2(0.845, 0.845)
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_5a2k0")
