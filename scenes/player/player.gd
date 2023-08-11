@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var hit_sound: AudioStreamPlayer2D
+
 signal player_shooted_laser(position, target_direction)
 signal player_throwed_granade(position, target_direction)
 
@@ -8,15 +10,26 @@ signal player_throwed_granade(position, target_direction)
 @export var max_speed: int = 500
 @export var speed: int = max_speed
 
+
+
 var can_shoot_laser: bool = true
 var can_throw_granade: bool = true
 var just_pressed_primary_action = false
 var just_pressed_secondary_action = false
 
+var previous_health: int
+
+
+func _ready():
+	hit_sound = AudioStreamPlayer2D.new()
+	hit_sound.stream = load("res://assets/audio/solid_impact.ogg")
+	add_child(hit_sound)
 
 
 func _process(_delta): #con _ no se usa delta
-	
+	if previous_health > Globals.health:
+		hit_sound.play()
+	previous_health = Globals.health
 	#movement input
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed

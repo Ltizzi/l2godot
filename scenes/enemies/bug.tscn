@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ymjchtfp7s42" path="res://assets/graphics/enemies/bug/attack/00010.png" id="1_0tv4n"]
 [ext_resource type="Script" path="res://scenes/enemies/bug.gd" id="1_6x27v"]
 [ext_resource type="Texture2D" uid="uid://dpm4l1wrdqyat" path="res://assets/graphics/enemies/bug/attack/00011.png" id="2_c6ep2"]
-[ext_resource type="Shader" path="res://scenes/enemies/scout.gdshader" id="2_kp03e"]
 [ext_resource type="Texture2D" uid="uid://pfhh6u6cqdxg" path="res://assets/graphics/enemies/bug/attack/00012.png" id="3_8yip8"]
 [ext_resource type="Texture2D" uid="uid://brb7se43okcfb" path="res://assets/graphics/enemies/bug/attack/00013.png" id="4_48bk0"]
 [ext_resource type="Texture2D" uid="uid://8vuc7mic8wao" path="res://assets/graphics/enemies/bug/attack/00014.png" id="5_qounx"]
@@ -34,12 +33,44 @@
 [ext_resource type="Texture2D" uid="uid://c0gulcu8wekw1" path="res://assets/graphics/enemies/bug/walk/00008.png" id="30_ujmnc"]
 [ext_resource type="Texture2D" uid="uid://rtly72rnkgly" path="res://assets/graphics/explosions/grunge.png" id="33_qnepo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0mdt"]
-shader = ExtResource("2_kp03e")
+[sub_resource type="Shader" id="Shader_b2r1a"]
+code = "shader_type canvas_item;
+
+//hace el link con godot/inspector/gdscript
+uniform vec3 color: source_color = vec3(1);
+uniform float progress: hint_range(0.0, 1.0, 0.1) = 0;
+
+// fragment : color y alpha de cada pixel
+void fragment() {
+	float current_a = texture(TEXTURE, UV).a;  //TEXTURE es el sprite, .a elige el alpha value
+	//COLOR= vec4(UV.x,1,1,1); //UV es la posicion del pixel, a medida q X aumente, va de 0 a 1, 1 es rojo, por lo q la imagens e vuelve blanca
+	//COLOR = vec4(1,1,1,0.5); // vec4 es color
+//
+	//mix mezcla dos valores, dos vector 4 en este caso, la imagen -primer argumento- y otro vec4 todo blanco y el current alpha
+	// 1.0 significa tennes todo del 2do vector y nada del primero
+	vec4 target_color = mix(texture(TEXTURE,UV), vec4(color, current_a), progress);
+	COLOR = target_color;
+//	if (current_a == 1.0){
+//		COLOR = vec4(1,1,1,1);
+//	}
+	
+	
+}
+
+// position de cada single pixel
+//void vertex(){
+//
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e41er"]
+resource_local_to_scene = true
+shader = SubResource("Shader_b2r1a")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/progress = 0.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6ktoj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7qbg"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -190,13 +221,11 @@ script = ExtResource("1_6x27v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0.396078, 0.231373, 1)
 z_index = 1
-material = SubResource("ShaderMaterial_o0mdt")
+material = SubResource("ShaderMaterial_e41er")
 rotation = 1.5708
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_6ktoj")
+sprite_frames = SubResource("SpriteFrames_b7qbg")
 animation = &"attack"
-frame = 20
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

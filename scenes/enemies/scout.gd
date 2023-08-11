@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var hit_sound: AudioStreamPlayer2D
+
 var player_nearby: bool = false
 
 var can_laser: bool = true
@@ -8,6 +10,11 @@ var can_left_gun_shoot = true
 var health: int = 100
 
 signal laser(pos, dir)
+
+func _ready():
+	hit_sound = AudioStreamPlayer2D.new()
+	hit_sound.stream = load("res://assets/audio/solid_impact.ogg")
+	add_child(hit_sound)
 
 func _process(_delta):
 	
@@ -27,6 +34,7 @@ func _process(_delta):
 func hit():
 	print("scout hitted!")
 	health -= 10
+	hit_sound.play()
 	for i in range(1):
 		$Sprite2D.material.set_shader_parameter("progress", 1.0)
 		await get_tree().create_timer(0.04).timeout
@@ -38,6 +46,7 @@ func hit():
 func explossion_hit():
 	print("boom")
 	health -= 50
+	hit_sound.play()
 	print(health)
 	if health <= 0:
 		queue_free()

@@ -7,6 +7,7 @@ var direction: Vector2 = Vector2.UP
 func _ready():
 	var timer = get_tree().create_timer(2.0).timeout
 	timer.connect(_on_timer_timeout)
+	
 
 
 func _process(delta):
@@ -25,7 +26,7 @@ func _on_body_entered(body):
 func _on_timer_timeout():
 	destroy_animation()
 
-func destroy_animation():
+func destroy_animation(): 
 	$AnimationPlayer.play("destroyed")	
 	
 func draw_particles():

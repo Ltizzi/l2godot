@@ -33,11 +33,17 @@ func _on_body_entered(body):
 	var healed = false
 	#body.add_item(type)
 	if body.name == "Player":
+	
+		$AudioStreamPlayer2D.play()
 		
+		if type == "health" and Globals.health == 100:
+			var tween = create_tween()
+			tween.tween_property($AudioStreamPlayer2D, "pitch_scale", 0.3, 0.3 )
 		
 		if type == "health" and Globals.health < 100:
 			Globals.health += 20
 			healed = true
+		
 			
 		if type == "laser" and Globals.laser_amount < 40:
 			Globals.laser_amount += 10
@@ -46,6 +52,8 @@ func _on_body_entered(body):
 			Globals.granade_amount +=1
 		
 		if type != "health" or healed:
+
+			#$AudioStreamPlayer2D.set_pitch_scale(0.42)
 			var tween = create_tween()
 			tween.set_parallel(true)
 			tween.tween_property(self, "scale", Vector2(2, 3), 0.3)

@@ -6,10 +6,18 @@ var player_near: bool = false
 
 var health: int = 50
 
+var hit_sound: AudioStreamPlayer2D
+var is_being_attack: bool = false
+
 
 @onready var initial_position = position
 var going_back: bool = false
 var is_arrive: bool = false
+
+func _ready():
+	hit_sound = AudioStreamPlayer2D.new()
+	hit_sound.stream = load("res://assets/audio/organic_impact.mp3")
+	add_child(hit_sound)
 
 func _process(_delta):
 	var direction = (Globals.player_position - position).normalized()
@@ -32,15 +40,19 @@ func _process(_delta):
 		health = 50
 	
 func hit():
+	is_being_attack = true
 	active = true
 	health -= 10
+	hit_sound.play()
 	$Node2D/HitParticles.emitting = true
-	for i in range(1):		
-		$AnimatedSprite2D.material.set_shader_parameter("progress", 1) 
-		await get_tree().create_timer(0.04).timeout
-		$AnimatedSprite2D.material.set_shader_parameter("progress", 0)
-		await get_tree().create_timer(0.04).timeout
+	if is_being_attack:
+		for i in range(1):		
+			$AnimatedSprite2D.material.set_shader_parameter("progress", 1) 
+			await get_tree().create_timer(0.04).timeout
+			$AnimatedSprite2D.material.set_shader_parameter("progress", 0)
+			await get_tree().create_timer(0.04).timeout
 	$Node2D/HitParticles.emitting = true
+	is_being_attack = false
 	if health <= 0:
 		$AnimatedSprite2D.visible = false
 		#$Node2D/HitParticles.emitting = true
@@ -50,6 +62,7 @@ func hit():
 func explossion_hit():
 	health -= 50
 	active = true
+	hit_sound.play()
 	if health <= 0:
 		queue_free()
 
@@ -59,6 +72,7 @@ func _on_notice_area_body_entered(_body):
 	$AnimatedSprite2D.play("walk")
 
 func _on_notice_area_body_exited(_body):
+	player_near = false
 	active = false
 	$AnimatedSprite2D.stop()
 	going_back = true;
@@ -73,7 +87,7 @@ func _on_attack_area_body_entered(_body):
 
 func _on_attack_area_body_exited(_body):
 	player_near = false
-
+	$AnimatedSprite2D.stop()
 
 func _on_animated_sprite_2d_animation_finished():
 	if player_near:

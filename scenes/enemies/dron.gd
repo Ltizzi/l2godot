@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var hit_sound: AudioStreamPlayer2D
+
 var pos: Vector2 = Vector2.ZERO
 @export var speed: int = 400
 
@@ -11,6 +13,9 @@ var exploded: bool = false
 
 func _ready():
 	$Explosion.hide()
+	hit_sound = AudioStreamPlayer2D.new()
+	hit_sound.stream = load("res://assets/audio/solid_impact.ogg")
+	add_child(hit_sound)
 
 
 func _process(delta):
@@ -30,10 +35,12 @@ func _process(delta):
 				var instance_object = instance_from_id(id)
 				if "explossion_hit" in instance_object:
 					instance_object.explossion_hit()
+			
 
 func hit():
 	print("damage")
 	health -= 10
+	hit_sound.play()
 	for i in range(1):
 		$Sprite2D.material.set_shader_parameter("progress", 1.0)
 		await get_tree().create_timer(0.04).timeout
@@ -46,6 +53,7 @@ func hit():
 	
 func explossion_hit():
 	health -= 50
+	hit_sound.play()
 	if health <= 0:
 		speed = 0
 		$AnimationPlayer.play("explossion")
